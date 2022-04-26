@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Row.css";
 import axios from "./axios";
+import YouTube from "react-youtube";
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
 function Rows({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
+  const [trailerUrl, setTrailerUrl]=useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,16 @@ function Rows({ title, fetchUrl, isLargeRow }) {
     fetchData();
   }, [fetchUrl]);
 
+  const opts ={
+    height="390",
+    width="100%",
+    playerVars:{
+      //https://developers.google.com/youtube/player_parameters
+      autoplay:1,
+    },
+  };
+  const handleClick =
+
   return (
     <div className="Rows">
       <h2>{title}</h2>
@@ -23,6 +35,7 @@ function Rows({ title, fetchUrl, isLargeRow }) {
         {movies.map((movie) => (
           <img
             key={movie.id}
+            onClick={()=> handleClick(movie)}
             className={`row__poster ${isLargeRow && "row__posterLarge"}`}
             src={`${base_url}${
               isLargeRow ? movie.poster_path : movie.backdrop_path
@@ -31,6 +44,7 @@ function Rows({ title, fetchUrl, isLargeRow }) {
           />
         ))}
       </div>
+      {trailerUrl && <YouTube videoID={tailerUrl} opt={opts}/>}
     </div>
   );
 }
