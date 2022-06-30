@@ -1,30 +1,44 @@
 .nav {
   position: fixed;
+  background: transparent;
   top: 0;
   width: 100%;
   padding: 20px;
-  height: 30px;
   z-index: 1;
   transition-timing-function: ease-in;
   transition: all 0.5s;
-  /*
-  display: flex;
-  justify-content: space-between;*/
+  color: white;
+  list-style: none;
 }
 
+.list {
+  list-style: none;
+  padding-left: 100px;
+}
+li {
+  display: inline;
+  font-size: 12px;
+  margin-left: 20px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
 .nav__black {
-  background-color: #111;
+  background-color: black;
 }
 .nav__logo {
   position: fixed;
   left: 20px;
-  width: 80px;
+  width: 100px;
   object-fit: contain;
 }
 
 .nav__avatar {
-  position: fixed;
-  right: 20px;
-  width: 30px;
+  position: absolute;
+  right: 80px;
+  top: 15px;
+  width: 35px;
   object-fit: contain;
+  border-radius: 5px;
 }
